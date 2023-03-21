@@ -10,14 +10,15 @@ function playerSelection(){
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors"){
         return playerChoice;
     }
-    else return console.log("Invalid Player Choice");
+    else console.log("Invalid Player Choice");
+    return playerSelection();
     
 }
 function playRound(playerSelection, getComputerChoice) {
     let playerChoice = playerSelection;
     let ComputerChoice = getComputerChoice;
     
-//going to have to change the console.log to a return//
+//go through each choice and the possible results//
     if (playerChoice === "rock"){
         let result;
         switch(ComputerChoice){
@@ -65,9 +66,27 @@ function playRound(playerSelection, getComputerChoice) {
 }
 
 function game(){
+    let win = 0;
+    let loss = 0;
     for (let i = 0; i < 5;i++){
         let result = playRound(getComputerChoice(), playerSelection());
         
+        console.log(result);
+
+        if(result.slice(0,7 ) === "You win"){
+            win += 1;
+        }  else if (result.slice(0,8) === "You lose"){
+            loss += 1;
+        }
     }
+
+    if (win > loss) {
+        console.log("The child of Man is victorious!");
+    } else if (loss > win) {
+        console.log("The machines have beaten humanity today!")
+    } else console.log("It is a tie!");
+
+
+    
 }
 
