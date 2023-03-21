@@ -16,47 +16,58 @@ function playerSelection(){
 function playRound(playerSelection, getComputerChoice) {
     let playerChoice = playerSelection;
     let ComputerChoice = getComputerChoice;
-
+    
+//going to have to change the console.log to a return//
     if (playerChoice === "rock"){
+        let result;
         switch(ComputerChoice){
             case "rock":
-                console.log("It's a draw!")
-                break;
+                result = "It's a draw!";
+                return result;
             case "paper":
-                console.log("You lose! Paper beats Rock")
-                break;
+                result = "You lose! Paper beats Rock";
+                return result;
             case "scissors":
-                console.log("You win! Rock beats Scissors")
-                break;
+                result = "You win! Rock beats Scissors";
+                return result;
         }
     }
 
     if (playerChoice === "scissors"){
+        
         switch(ComputerChoice){
             case "scissors":
-                console.log("It's a draw!")
-                break;
+                result = "It's a draw!";
+                return result;
             case "rock":
-                console.log("You lose! Rock beats Scissors")
-                break;
+                 result = "You lose! Rock beats Scissors";
+                 return result;
             case "paper":
-                console.log("You win! Scissors beats Paper")
-                break;
+                 result = "You win! Scissors beats Paper";
+                 return result;
         }
     }
 
     if (playerChoice === "paper"){
         switch(ComputerChoice){
             case "paper":
-                console.log("It's a draw!")
-                break;
+                result = "It's a draw!"
+                return result;
             case "scissors":
-                console.log("You lose! Scissors beats Paper")
-                break;
+                result = "You lose! Scissors beats Paper"
+                return result;
             case "rock":
-                console.log("You win! Paper beats Rock")
-                break;
+                result = "You win! Paper beats Rock"
+                return result;
         }
     }
 
 }
+
+function game(){
+    for (let i = 0; i < 5;i++){
+        let result = playRound(getComputerChoice(), playerSelection());
+        
+    }
+}
+
