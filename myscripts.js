@@ -14,9 +14,16 @@ function playerSelection(){
     return playerSelection();
     
 }
-function playRound(playerSelection, getComputerChoice) {
-    let playerChoice = playerSelection;
-    let ComputerChoice = getComputerChoice;
+function playRound(e) {
+    
+    function GetComputerChoice(){ choices= ["rock", "paper", "scissors"];
+        let randomIndex = Math.floor(Math.random() * 3);
+        let choice = choices[randomIndex];
+        return choice;}
+    ComputerChoice = GetComputerChoice();
+    console.log(ComputerChoice);
+    let playerChoice = e.target.innerHTML.toLowerCase();
+    console.log(playerChoice);
     
 //go through each choice and the possible results//
     if (playerChoice === "rock"){
@@ -24,13 +31,16 @@ function playRound(playerSelection, getComputerChoice) {
         switch(ComputerChoice){
             case "rock":
                 result = "It's a draw!";
-                return result;
+                console.log(result);
+                break;
             case "paper":
                 result = "You lose! Paper beats Rock";
-                return result;
+                console.log(result);
+                break;
             case "scissors":
                 result = "You win! Rock beats Scissors";
-                return result;
+                console.log(result);
+                break;
         }
     }
 
@@ -39,13 +49,16 @@ function playRound(playerSelection, getComputerChoice) {
         switch(ComputerChoice){
             case "scissors":
                 result = "It's a draw!";
-                return result;
+                console.log(result);
+                break;
             case "rock":
                  result = "You lose! Rock beats Scissors";
-                 return result;
+                 console.log(result);
+                 break;
             case "paper":
                  result = "You win! Scissors beats Paper";
-                 return result;
+                 console.log(result);
+                 break;
         }
     }
 
@@ -53,13 +66,16 @@ function playRound(playerSelection, getComputerChoice) {
         switch(ComputerChoice){
             case "paper":
                 result = "It's a draw!"
-                return result;
+                console.log(result);
+                break;
             case "scissors":
                 result = "You lose! Scissors beats Paper"
-                return result;
+                console.log(result);
+                break;
             case "rock":
                 result = "You win! Paper beats Rock"
-                return result;
+                console.log(result);
+                break;
         }
     }
 
@@ -89,4 +105,8 @@ function game(){
 
     
 }
+const buttons = document.querySelectorAll('.selection');
+buttons.forEach((button) => {
+
+button.addEventListener('click', playRound)})
 
