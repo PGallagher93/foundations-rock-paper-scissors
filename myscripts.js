@@ -20,26 +20,26 @@ function playRound(e) {
         let randomIndex = Math.floor(Math.random() * 3);
         let choice = choices[randomIndex];
         return choice;}
-    ComputerChoice = GetComputerChoice();
-    console.log(ComputerChoice);
+    let ComputerChoice = GetComputerChoice();
     let playerChoice = e.target.innerHTML.toLowerCase();
-    console.log(playerChoice);
+    let gameResults = document.querySelector('#results');
+    console.log(ComputerChoice);
+    console.log(playerChoice)
+    
     
 //go through each choice and the possible results//
     if (playerChoice === "rock"){
         let result;
         switch(ComputerChoice){
             case "rock":
-                result = "It's a draw!";
-                console.log(result);
+                gameResults.innerHTML = "It's a draw!";
+                
                 break;
             case "paper":
-                result = "You lose! Paper beats Rock";
-                console.log(result);
+                gameResults.innerHTML = "You lose! Paper beats Rock";
                 break;
             case "scissors":
-                result = "You win! Rock beats Scissors";
-                console.log(result);
+                gameResults.innerHTML = "You win! Rock beats Scissors";
                 break;
         }
     }
@@ -48,33 +48,27 @@ function playRound(e) {
         
         switch(ComputerChoice){
             case "scissors":
-                result = "It's a draw!";
-                console.log(result);
+                gameResults.innerHTML = "It's a draw!";
                 break;
             case "rock":
-                 result = "You lose! Rock beats Scissors";
-                 console.log(result);
-                 break;
+                gameResults.innerHTML = "You lose! Rock beats Scissors";
+                break;
             case "paper":
-                 result = "You win! Scissors beats Paper";
-                 console.log(result);
-                 break;
+                gameResults.innerHTML = "You win! Scissors beats Paper";
+                break;
         }
     }
 
     if (playerChoice === "paper"){
         switch(ComputerChoice){
             case "paper":
-                result = "It's a draw!"
-                console.log(result);
+                gameResults.innerHTML = "It's a draw!"
                 break;
             case "scissors":
-                result = "You lose! Scissors beats Paper"
-                console.log(result);
+                gameResults.innerHTML = "You lose! Scissors beats Paper"
                 break;
             case "rock":
-                result = "You win! Paper beats Rock"
-                console.log(result);
+                gameResults.innerHTML = "You win! Paper beats Rock"
                 break;
         }
     }
