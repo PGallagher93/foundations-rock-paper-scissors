@@ -1,3 +1,14 @@
+
+//initialise a global score count
+let playerCount = 0;
+let computerCount = 0;
+playerScore.innerHTML = `Player Score: ${playerCount}`;
+computerScore.innerHTML = `Computer Score: ${computerCount}`;
+
+
+
+
+
 function getComputerChoice() {
     choices= ["rock", "paper", "scissors"];
     let randomIndex = Math.floor(Math.random() * 3);
@@ -23,8 +34,8 @@ function playRound(e) {
     let ComputerChoice = GetComputerChoice();
     let playerChoice = e.target.innerHTML.toLowerCase();
     let gameResults = document.querySelector('#results');
-    console.log(ComputerChoice);
-    console.log(playerChoice)
+    winner.innerHTML = ""
+    
     
     
 //go through each choice and the possible results//
@@ -37,9 +48,14 @@ function playRound(e) {
                 break;
             case "paper":
                 gameResults.innerHTML = "You lose! Paper beats Rock";
+                computerCount += 1;
+                computerScore.innerHTML = `Computer Score: ${computerCount}`;
                 break;
             case "scissors":
                 gameResults.innerHTML = "You win! Rock beats Scissors";
+                playerCount += 1;
+                playerScore.innerHTML = `Player Score: ${playerCount}`;
+
                 break;
         }
     }
@@ -52,9 +68,13 @@ function playRound(e) {
                 break;
             case "rock":
                 gameResults.innerHTML = "You lose! Rock beats Scissors";
+                computerCount += 1;
+                computerScore.innerHTML = `Computer Score: ${computerCount}`;
                 break;
             case "paper":
                 gameResults.innerHTML = "You win! Scissors beats Paper";
+                playerCount += 1;
+                playerScore.innerHTML = `Player Score: ${playerCount}`;
                 break;
         }
     }
@@ -62,15 +82,33 @@ function playRound(e) {
     if (playerChoice === "paper"){
         switch(ComputerChoice){
             case "paper":
-                gameResults.innerHTML = "It's a draw!"
+                gameResults.innerHTML = "It's a draw!";
                 break;
             case "scissors":
-                gameResults.innerHTML = "You lose! Scissors beats Paper"
+                gameResults.innerHTML = "You lose! Scissors beats Paper";
+                computerCount += 1;
+                computerScore.innerHTML = `Computer Score: ${computerCount}`;
                 break;
             case "rock":
-                gameResults.innerHTML = "You win! Paper beats Rock"
+                gameResults.innerHTML = "You win! Paper beats Rock";
+                playerCount += 1;
+                playerScore.innerHTML = `Player Score: ${playerCount}`;
                 break;
+                
         }
+    }
+    if (playerCount == 5){
+        winner.innerHTML = "You beat the computer! Well done, soldier!";
+        playerCount = 0;
+        computerCount = 0;
+        playerScore.innerHTML = `Player Score: ${playerCount}`;
+        computerScore.innerHTML = `Computer Score: ${computerCount}`;
+    } else if (computerCount == 5){
+        winner.innerHTML = "The machines have won this battle! Retreat soldier!";
+        playerCount=0;
+        computerCount = 0;
+        playerScore.innerHTML = `Player Score: ${playerCount}`;
+        computerScore.innerHTML = `Computer Score: ${computerCount}`;
     }
 
 }
@@ -103,4 +141,3 @@ const buttons = document.querySelectorAll('.selection');
 buttons.forEach((button) => {
 
 button.addEventListener('click', playRound)})
-
