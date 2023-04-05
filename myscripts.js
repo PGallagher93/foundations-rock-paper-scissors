@@ -26,7 +26,7 @@ function playerSelection(){
     
 }
 function playRound(e) {
-    
+    //function to find the computers choice
     function GetComputerChoice(){ choices= ["rock", "paper", "scissors"];
         let randomIndex = Math.floor(Math.random() * 3);
         let choice = choices[randomIndex];
@@ -34,6 +34,7 @@ function playRound(e) {
     let ComputerChoice = GetComputerChoice();
     let playerChoice = e.target.innerHTML.toLowerCase();
     let gameResults = document.querySelector('#results');
+    //resets winner message 
     winner.innerHTML = ""
     
     
@@ -97,6 +98,7 @@ function playRound(e) {
                 
         }
     }
+    //check to see if the game is over (one player reaches a score of 5)
     if (playerCount == 5){
         winner.innerHTML = "You beat the computer! Well done, soldier!";
         playerCount = 0;
